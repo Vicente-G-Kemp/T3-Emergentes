@@ -27,8 +27,8 @@ cur = con.cursor()
 
 # cur.executemany('''INSERT INTO admin (username, password) VALUES (?, ?)''', admin)
 
-res = cur.execute("SELECT * FROM admin")
-print(res.fetchall()[0])
+res = cur.execute("SELECT * FROM accesstokens")
+print(res.fetchall())
 
 con.commit()
 con.close()

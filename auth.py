@@ -1,26 +1,35 @@
 import sqlite3
-
+import uuid 
 
 def login(username, password):
     con = sqlite3.connect("storage.db")
     cur = con.cursor()
-    count = cur.execute("SELECT count(*) FROM admin where username=?", (username,)).fetchone()
-    print(count)
-    count_value = count[0]
-    print(count_value)
-    # for c in count:
-    #     count_value = c[0]
-    user = None
-    if(count_value != 0):
-        useru = cur.execute("SELECT * FROM admin where username=? AND password=?", (username, password,)).fetchall()
+    check_user = cur.execute("SELECT * FROM admin where username=? AND password=?", (username, password,)).fetchall()
+
+    print(type(check_user))
+    print(check_user)
+
+    if(check_user):
         print("ok")
-        # print(password)
-        print(useru)
-        if(user == None):
-            print("none")
-        # print(useru[0][2])
-        # if(password == useru[0][2]):
-        #     print("ok1")
-        #     user = useru
-        #     return user
-    return user
+        token = uuid.uuid4().hex
+        print(type(token))
+        cur.execute("INSERT INTO accesstokens(access_token) VALUES (?)", [(token)])
+        print(cur.execute("SELECT * FROM accesstokens").fetchall())
+        con.commit()
+        con.close()
+        return token
+    else:
+        con.commit()
+        con.close()
+        user = None
+        return user
+    
+def authenticate_token(token):
+    con = sqlite3.connect("storage.db")
+    cur = con.cursor()
+    check_token = cur.execute("SELECT * FROM accesstokens where access_token=?", (token, )).fetchall()
+    print(check_token)
+    if(check_token):
+        return True
+    else:
+        return False
