@@ -33,3 +33,23 @@ def authenticate_token(token):
         return True
     else:
         return False
+    
+def authenticate_company(company_api_key):
+    con = sqlite3.connect("storage.db")
+    cur = con.cursor()
+    check_token = cur.execute("SELECT * FROM company where company_api_key=?", (company_api_key, )).fetchall()
+    print(check_token)
+    if(check_token):
+        return True
+    else:
+        return False
+    
+def authenticate_sensor(sensor_api_key):
+    con = sqlite3.connect("storage.db")
+    cur = con.cursor()
+    check_token = cur.execute("SELECT * FROM sensor where sensor_api_key=?", (sensor_api_key, )).fetchall()
+    print(check_token)
+    if(check_token):
+        return True
+    else:
+        return False

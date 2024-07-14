@@ -26,3 +26,14 @@ def create_company(company_name):
         # status = "Company already exists."
         # return status
         return False
+    
+def get_companies(company_api_key):
+    con = sqlite3.connect("storage.db")
+    cur = con.cursor()
+    companies = None
+    if(company_api_key == '*'):
+        companies = cur.execute("SELECT * FROM company").fetchall()
+    else:
+        companies = cur.execute("SELECT * FROM company where company_api_key=?", (company_api_key, )).fetchone()
+
+    return companies
