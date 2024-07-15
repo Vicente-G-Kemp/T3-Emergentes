@@ -1,0 +1,364 @@
+{
+	"info": {
+		"_postman_id": "0ccf40e2-e9d3-472a-b021-58057e813cc5",
+		"name": "T3-Emergentes",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14965481"
+	},
+	"item": [
+		{
+			"name": "LOGIN",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\" : \"admin1\",\n    \"password\" : \"12345\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "20.150.215.14/api/v1/login",
+					"host": [
+						"20",
+						"150",
+						"215",
+						"14"
+					],
+					"path": [
+						"api",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST COMPANY",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "f980489d1cf44801ae7413757812a993",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"company_name\" : \"Company1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/company",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST LOCATION",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "f980489d1cf44801ae7413757812a993",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location_name\" : \"Location0\",\n    \"location_country\" : \"Country0\",\n    \"location_city\" : \"City0\",\n    \"location_meta\" : \"Meta0\",\n    \"company_api_key\" : \"84ce90c136f44f348769f600d8768b92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/location",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"location"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST SENSOR",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "f980489d1cf44801ae7413757812a993",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location_id\" : 1,\n    \"sensor_name\" : \"Sensor0\",\n    \"sensor_category\" : \"Category0\",\n    \"sensor_meta\" : \"Meta0\",\n    \"company_api_key\" : \"84ce90c136f44f348769f600d8768b92\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/sensor",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"sensor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST DATA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "sensor-api-key",
+						"value": "fafba54bfdf547ae8a54139df03cc35c",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sensor_api_key\" : \"fafba54bfdf547ae8a54139df03cc35c\",\n    \"json_data\" : [\n        {\n            \"category\" : 2\n        },\n        {\n        \"data0\" : \"ytrd\",\n        \"data1\" : \"fff\",\n        \"data2\" : 1882,\n        \"timestamp\" : \"2022-05-09 14:16:00\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/sensor_data",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"sensor_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET COMPANY",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "f980489d1cf44801ae7413757812a993",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/company",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"company"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "84ce90c136f44f348769f600d8768b92",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET LOCATION",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "f980489d1cf44801ae7413757812a993",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/location?company_key=84ce90c136f44f348769f600d8768b92",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"location"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "84ce90c136f44f348769f600d8768b92",
+							"disabled": true
+						},
+						{
+							"key": "company_key",
+							"value": "84ce90c136f44f348769f600d8768b92"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET SENSOR",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "auth-token",
+						"value": "f980489d1cf44801ae7413757812a993",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sensor_api_key\" : \"fafba54bfdf547ae8a54139df03cc35c\",\n    \"json_data\" : [\n        {\n            \"category\" : \"0\"\n        },\n        {\n        \"data0\" : \"aaa\",\n        \"data1\" : \"bbb\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:5000/api/v1/sensor_data",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"sensor_data"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET DATA",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "company-api-key",
+						"value": "84ce90c136f44f348769f600d8768b92",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "20.150.215.14/api/v1/sensor_data?sensor_id=[1,1,1]&from=19930&to=1883497812",
+					"host": [
+						"20",
+						"150",
+						"215",
+						"14"
+					],
+					"path": [
+						"api",
+						"v1",
+						"sensor_data"
+					],
+					"query": [
+						{
+							"key": "sensor_id",
+							"value": "[1,1,1]"
+						},
+						{
+							"key": "from",
+							"value": "19930"
+						},
+						{
+							"key": "to",
+							"value": "1883497812"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
